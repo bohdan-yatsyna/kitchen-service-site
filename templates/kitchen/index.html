@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Kitchen Home Page</h1>
+  <hr>
+   <ul>
+     <li>We have the next number of Cooks: {{ num_cooks }}.</li>
+     <li>Provided {{ num_dish_types }} Dish Types</li>
+     <li>Exact Dishes number: {{ num_dishes }}</li>
+   </ul>
+  <hr>
+  <p>You have visited this page
+    {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+{% endblock %}
