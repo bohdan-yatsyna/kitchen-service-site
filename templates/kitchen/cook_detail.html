@@ -1,0 +1,39 @@
+{% extends "base.html" %}}
+
+{% block title %}
+  <title>
+    Cook: {{ cook.first_name }}  {{ cook.last_name }}
+  </title>
+{% endblock %}
+
+{% block content %}
+  <h1>Cook: {{ cook.first_name }} {{ cook.last_name }}</h1>
+  <p>
+    <strong>Username: </strong>
+    {{ cook.username }}
+  </p>
+  <hr>
+  <ul>
+    <li><strong>First name: </strong>{{ cook.first_name }}</li>
+    <li><strong>Last name: </strong>{{ cook.last_name }}</li>
+    <li><strong>Email: </strong>{{ cook.email }}</li>
+    <li><strong>Years of experience: </strong>
+      {% if cook.years_of_experience %}
+        {{ cook.years_of_experience }}
+      {% endif %}
+    </li>
+    <li><strong>Count of recipes: </strong>{{ cook.dishes.all.count }}</li>
+  </ul>
+  <hr>
+
+  <h3>Dishes: </h3>
+    {% if cook.dishes.all %}
+      {% for dish in cook.dishes.all %}
+        <ul>
+          <li><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish }}</a></li>
+        </ul>
+      {% empty %}
+        <p>No recipes assigned yet!</p>
+      {% endfor %}
+    {% endif %}
+{% endblock %}
