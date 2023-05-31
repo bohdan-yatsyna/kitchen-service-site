@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Dish Types</title>{% endblock %}
+
+{% block content %}
+  <h1>Dish Types in our Restaurant:</h1>
+  <hr>
+
+  {% if dish_type_list %}
+  <ul>
+    {% for dish_type in dish_type_list %}
+      <li>
+        <strong>{{ dish_type.name }}</strong>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+    <p>There are no Dish Types yet</p>
+  {% endif %}
+
+{% endblock %}
