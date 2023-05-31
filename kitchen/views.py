@@ -51,13 +51,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 5
 
 
-# class DishTypeDetailView(DetailView):
-#     model = DishType
-#     queryset = DishType.objects.prefetch_related("dishes", "dishes__cooks")
-#     template_name = "kitchen/dish_type_detail.html"
-#     context_object_name = "dish_type"
-
-
-# class DriverDetailView(generic.DetailView):
-#     model = Driver
-#     queryset = Driver.objects.prefetch_related("cars")
+class CookDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Cook
+    queryset = Cook.objects.prefetch_related("dishes__dish_type")
+    paginate_by = 5
