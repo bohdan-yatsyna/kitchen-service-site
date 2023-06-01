@@ -3,7 +3,10 @@
 {% block title %}<title>Dishes</title>{% endblock %}
 
 {% block content %}
-  <h1>Dishes in our Restaurant:</h1>
+  <h1>
+    Dishes in our Restaurant:
+    <a class="btn btn-outline-primary" id="create" href="{% url 'kitchen:dish-create' %}">Create</a>
+  </h1>
   <hr>
 
   {% if dish_list %}
