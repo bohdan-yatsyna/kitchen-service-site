@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Delete the Dish</title>{% endblock %}
+
+{% block content %}
+  <h2>Delete Dish</h2>
+
+  <p>Are you sure you want to delete the dish {{ dish.name }}?</p>
+
+  <form action="" method="post">
+  {% csrf_token %}
+    <input type="submit" value="Delete" class="btn btn-outline-danger">
+    <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="btn btn-outline-dark">Cancel</a>
+  </form>
+{% endblock %}
