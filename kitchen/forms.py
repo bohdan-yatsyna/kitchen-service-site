@@ -37,7 +37,9 @@ class CookCreationForm(UserCreationForm):
         )
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 class CookUpdateForm(forms.ModelForm):
@@ -51,7 +53,9 @@ class CookUpdateForm(forms.ModelForm):
         )
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 def validate_years_of_experience(years_of_experience):
@@ -59,3 +63,14 @@ def validate_years_of_experience(years_of_experience):
         raise ValidationError("Please, enter a valid number")
 
     return years_of_experience
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name..."}
+        )
+    )
