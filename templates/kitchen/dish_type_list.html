@@ -3,7 +3,10 @@
 {% block title %}<title>Dish Types</title>{% endblock %}
 
 {% block content %}
-  <h1>Dish Types in our Restaurant:</h1>
+  <h1>
+    Dish Types in our Restaurant:
+    <a class="btn btn-outline-primary" id="create" href="{% url 'kitchen:dish-type-create' %}">Create</a>
+  </h1>
   <hr>
 
   {% if dish_type_list %}
@@ -11,6 +14,12 @@
     {% for dish_type in dish_type_list %}
       <li>
         <strong>{{ dish_type.name }}</strong>
+        <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger link-to-page">
+          Delete
+        </a>
+        <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-secondary link-to-page">
+          Update
+        </a>
       </li>
     {% endfor %}
   </ul>
