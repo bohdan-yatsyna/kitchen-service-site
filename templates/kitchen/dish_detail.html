@@ -25,11 +25,25 @@
   </p>
   <hr>
 
-  <h2>Responsible Cooks:</h2>
+  <h2>
+    Responsible Cooks:
+
+    {% if dish in user.dishes.all %}
+      <a href="{% url 'kitchen:toggle-cook-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
+        Delete me from this dish
+      </a>
+    {% else %}
+      <a href="{% url 'kitchen:toggle-cook-assign' pk=dish.id %}" class="btn btn-success link-to-page">
+        Assign me to this dish
+      </a>
+    {% endif %}
+  </h2>
+  <hr>
 
   {% for cook in dish.cooks.all %}
-    <hr>
-    <p>{{ cook.first_name }} {{ cook.last_name }}</p>
+    <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">
+      <p>{{ cook }}</p>
+    </a>
 
   {% empty %}
     <p>This dish has no assigned Cooks.</p>
