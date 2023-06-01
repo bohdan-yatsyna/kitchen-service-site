@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView, UpdateView, DeleteView
 
-from kitchen.forms import DishForm, CookCreationForm, CookUpdateForm, DishTypeSearchForm
+from kitchen.forms import DishForm, CookCreationForm, CookUpdateForm, DishTypeSearchForm, DishSearchForm
 from kitchen.models import Cook, Dish, DishType
 
 
@@ -34,7 +34,6 @@ def index(request):
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     context_object_name = "dish_type_list"
-    queryset = DishType.objects.order_by("name")
     template_name = "kitchen/dish_type_list.html"
     paginate_by = 5
 
@@ -85,9 +84,31 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
-    queryset = Dish.objects.select_related("dish_type")
     template_name = "kitchen/dish_list.html"
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(DishListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = DishSearchForm(
+            initial={"name": name}
+        )
+
+        return context
+
+    def get_queryset(self) -> QuerySet:
+        queryset = Dish.objects.select_related("dish_type")
+
+        form = DishSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+
+        return queryset
 
 
 class DishDetailView(LoginRequiredMixin, generic.DetailView):
