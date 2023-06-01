@@ -26,6 +26,28 @@ class DishForm(forms.ModelForm):
         return price
 
 
+class DishSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name..."}
+        )
+    )
+
+
+class DishTypeSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={"placeholder": "Search by name..."}
+        )
+    )
+
+
 class CookCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Cook
@@ -65,23 +87,12 @@ def validate_years_of_experience(years_of_experience):
     return years_of_experience
 
 
-class DishTypeSearchForm(forms.Form):
-    name = forms.CharField(
+class CookSearchForm(forms.Form):
+    username = forms.CharField(
         max_length=255,
         required=False,
         label="",
         widget=forms.TextInput(
-            attrs={"placeholder": "Search by name..."}
-        )
-    )
-
-
-class DishSearchForm(forms.Form):
-    name = forms.CharField(
-        max_length=255,
-        required=False,
-        label="",
-        widget=forms.TextInput(
-            attrs={"placeholder": "Search by name..."}
+            attrs={"placeholder": "Search by username..."}
         )
     )
