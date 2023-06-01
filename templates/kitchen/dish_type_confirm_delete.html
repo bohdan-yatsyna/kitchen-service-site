@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Delete the Dish Type</title>{% endblock %}
+
+{% block content %}
+  <h2>Delete Dish Type</h2>
+
+  <p>Are you sure you want to delete the <strong>{{ dishtype.name }}</strong>?</p>
+  <p>All Dishes with this Dish Type will be also deleted!</p>
+
+  <form action="" method="post">
+  {% csrf_token %}
+    <input type="submit" value="Delete" class="btn btn-outline-danger">
+    <a href="javascript:history.back()" class="btn btn-outline-dark">Cancel</a>
+  </form>
+{% endblock %}
