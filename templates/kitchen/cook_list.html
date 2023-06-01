@@ -3,7 +3,10 @@
 {% block title %}<title>Cooks</title>{% endblock %}
 
 {% block content %}
-  <h1>Our Cooks:</h1>
+  <h1>
+    Our Cooks:
+    <a class="btn btn-outline-primary" id="create" href="{% url 'kitchen:cook-create' %}">Add more</a>
+  </h1>
   <hr>
 
   {% if cook_list %}

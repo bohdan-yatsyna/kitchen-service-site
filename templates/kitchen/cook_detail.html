@@ -7,7 +7,16 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Cook: {{ cook.first_name }} {{ cook.last_name }}</h1>
+  <h1>
+    Cook: {{ cook.first_name }} {{ cook.last_name }}
+    <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
   <p>
     <strong>Username: </strong>
     {{ cook.username }}

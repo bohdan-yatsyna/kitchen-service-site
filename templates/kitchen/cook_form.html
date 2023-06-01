@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}<title>Cook {{ object|yesno:"Update,Create" }} page</title>{% endblock %}
+
+{% block content %}
+  <h1>{{ object|yesno:"Update,Create" }} the next Cook</h1>
+  <hr>
+  <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {{ form|crispy }}
+
+    <input type="submit" value="Submit" class="btn btn-success">
+    <a
+      class="btn btn-secondary"
+      href="{% url 'kitchen:cook-list' %}"
+    >Cancel</a>
+  </form>
+{% endblock %}
