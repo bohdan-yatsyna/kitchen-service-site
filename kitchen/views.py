@@ -18,7 +18,6 @@ from kitchen.forms import (
 from kitchen.models import Cook, Dish, DishType
 
 
-@login_required
 def index(request):
     """View function for the home page of the site."""
 
