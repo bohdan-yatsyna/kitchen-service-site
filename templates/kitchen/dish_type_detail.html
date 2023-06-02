@@ -1,0 +1,32 @@
+{% extends "base.html" %}}
+
+{% block title %}
+  <title>{{ dish_type.name }}</title>
+{% endblock %}
+
+{% block content %}
+  <h1>{{ dish_type.name }}</h1>
+    <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger link-to-page">
+      Delete
+    </a>
+
+    <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-secondary link-to-page">
+      Update
+    </a>
+  </h1>
+  <hr>
+  <h2>Total amount of recipe{{ dish_type.dishes.count|pluralize }}: {{ dish_type.dishes.count }}</h2>
+  <hr>
+
+  {% for dish in dish_type.dishes.all %}
+    <h3><a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></h3>
+    <ul>
+      <li>{{ dish.cooks.count }} cook{{ dish.cooks.count|pluralize }} can make this recipe.</li>
+      <li>price: {{ dish.price }}</li>
+    </ul>
+    <hr>
+  {% empty %}
+    <p>This dish type is empty.</p>
+  {% endfor %}
+
+{% endblock %}
