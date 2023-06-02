@@ -71,7 +71,7 @@ class CookUpdateForm(forms.ModelForm):
             "first_name",
             "last_name",
             "email",
-            "years_of_experience"
+            "years_of_experience",
         )
 
     def clean_years_of_experience(self):
