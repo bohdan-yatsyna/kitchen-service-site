@@ -15,7 +15,7 @@
   <ul>
     {% for dish_type in dish_type_list %}
       <li>
-        <strong>{{ dish_type.name }}</strong>
+        <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}"><strong>{{ dish_type.name }}</strong></a>
         <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger link-to-page">
           Delete
         </a>
