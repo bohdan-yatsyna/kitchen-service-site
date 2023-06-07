@@ -1,8 +1,16 @@
 {% load crispy_forms_filters %}
 
 <hr>
-<form action="" method="get" class="form-inline">
-  {{ search_form|crispy }}
-  <input class="btn btn-outline-secondary" type="submit" value="Search 🔎">
-</form>
+<div class="card border-0 shadow">
+  <div class="py-4">
+    <div class="container-sm">
+      <form action="" method="get">
+        {{ search_form|crispy }}
+        <div class="d-flex justify-content-center">
+          <input class="btn btn-outline-dark" type="submit" value="Search 🔎">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <hr>
