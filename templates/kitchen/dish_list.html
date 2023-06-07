@@ -1,29 +1,101 @@
 {% extends "base.html" %}
 
-{% block title %}<title>Dishes</title>{% endblock %}
+{% block title %}Dishes{% endblock %}
 
 {% block content %}
-  <h1>
-    Dishes in our Restaurant:
-    <a class="btn btn-outline-primary" id="create" href="{% url 'kitchen:dish-create' %}">Create</a>
-  </h1>
   <hr>
+  <div class="card border-0 shadow">
+    <div class="py-4">
+      <div class="d-flex justify-content-center">
+        <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+          <div class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <h1>
+              Dishes registered in the system
+              <a
+                  class="btn btn-outline-dark"
+                  href="{% url 'kitchen:dish-create' %}"
+              >Create more</a>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   {% include "includes/search_field.html" %}
 
-  {% if dish_list %}
-  <ul>
-    {% for dish in dish_list %}
-      <li>
-        <a href="{% url 'kitchen:dish-detail' pk=dish.id %}"><strong>{{ dish.name }}</strong></a>
-        (price: {{ dish.price }}, type: {{ dish.dish_type }})
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="card border-0 shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        {% if dish_list %}
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <thead class="thead-light">
+          <tr>
+            <th class="border-0 rounded-start">
+              <h5>ID</h5>
+            </th>
+            <th class="border-0">
+              <h5>Name</h5>
+            </th>
+            <th class="border-0">
+              <h5>Number of <br>responsible cooks</h5>
+            </th>
+            <th class="border-0">
+              <h5>Price</h5>
+            </th>
+            <th class="border-0 rounded-end">
+              <h5>Type</h5>
+            </th>
+          </tr>
+          </thead>
 
-  {% else %}
-    <p>There are no Dishes yet</p>
-  {% endif %}
+          {% for dish in dish_list %}
+          <tbody>
+          <tr>
+            <td class="border-0 fw-bold">
+              <h5>{{ dish.id }}</h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ dish.cooks.count }}
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>{{ dish.price }}</h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                <a
+                    href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.id %}"
+                >{{ dish.dish_type }}</a>
+              </h5>
+            </td>
+          </tbody>
+          {% endfor %}
+        </table>
+        {% else %}
+
+        <hr>
+          <div class="card border-0 shadow">
+            <div class="py-4">
+              <div class="d-flex justify-content-center">
+                <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                  <h3>
+                    There are no Dishes in the system.
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
   <hr>
 
 {% endblock %}

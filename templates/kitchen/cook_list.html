@@ -1,34 +1,108 @@
 {% extends "base.html" %}
 
-{% block title %}<title>Cooks</title>{% endblock %}
+{% block title %}Cooks{% endblock %}
 
 {% block content %}
-  <h1>
-    Our Cooks:
-    <a class="btn btn-outline-primary" id="create" href="{% url 'kitchen:cook-create' %}">Add more</a>
-  </h1>
+
   <hr>
+  <div class="card border-0 shadow">
+    <div class="py-4">
+      <div class="d-flex justify-content-center">
+        <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+          <div class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+            <h1>
+              Cooks registered in the system
+              <a class="btn btn-outline-dark" href="{% url 'kitchen:cook-create' %}">Register more</a>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   {% include "includes/search_field.html" %}
 
-  {% if cook_list %}
-  <ul>
-    {% for cook in cook_list %}
-      <li>
-        <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">
-          <strong>{{ cook.username }}</strong>
-          {% if cook.username == user.username %}
-            -Me-
-          {% endif %}
-        </a>
-        ({{ cook.first_name }} {{ cook.last_name }})
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="card border-0 shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        {% if cook_list %}
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <thead class="thead-light">
+          <tr>
+            <th class="border-0 rounded-start">
+              <h5>ID</h5>
+            </th>
+            <th class="border-0">
+              <h5>Username</h5>
+            </th>
+            <th class="border-0">
+              <h5>First name</h5>
+            </th>
+            <th class="border-0">
+              <h5>Last name</h5>
+            </th>
+            <th class="border-0">
+              <h5>Years of experience</h5>
+            </th>
+            <th class="border-0 rounded-end">
+              <h5>Email</h5>
+            </th>
+          </tr>
+          </thead>
 
-  {% else %}
-    <p>There are no Cooks yet</p>
-  {% endif %}
+          {% for cook in cook_list %}
+          <tbody>
+          <tr>
+            <td class="border-0 fw-bold">
+              <h5>{{ cook.id }}</h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                <a href="{{ cook.get_absolute_url }}">
+                  {{ cook.username }} {% if user == cook %} (Me){% endif %}
+                </a>
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ cook.first_name }}
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ cook.last_name }}
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ cook.years_of_experience|default_if_none:"-" }}
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ cook.email }}
+              </h5>
+            </td>
+          </tbody>
+          {% endfor %}
+        </table>
+        {% else %}
+          <hr>
+          <div class="card border-0 shadow">
+            <div class="py-4">
+              <div class="d-flex justify-content-center">
+                <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                  <h3>
+                    There are no Cooks in the system.
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
   <hr>
 
 {% endblock %}
