@@ -42,7 +42,7 @@ class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     context_object_name = "dish_type_list"
     template_name = "kitchen/dish_type_list.html"
-    paginate_by = 5
+    paginate_by = 8
 
     def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(DishTypeListView, self).get_context_data(**kwargs)
@@ -99,7 +99,7 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     template_name = "kitchen/dish_list.html"
-    paginate_by = 5
+    paginate_by = 8
 
     def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(DishListView, self).get_context_data(**kwargs)
@@ -149,7 +149,7 @@ class DishDeleteView(LoginRequiredMixin, DeleteView):
 
 class CookListView(LoginRequiredMixin, generic.ListView):
     model = Cook
-    paginate_by = 5
+    paginate_by = 8
 
     def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(CookListView, self).get_context_data(**kwargs)
@@ -178,7 +178,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
 class CookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Cook
     queryset = Cook.objects.prefetch_related("dishes__dish_type")
-    paginate_by = 5
+    paginate_by = 8
 
 
 class CookCreateView(LoginRequiredMixin, generic.CreateView):
