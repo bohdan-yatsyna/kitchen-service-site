@@ -1,32 +1,100 @@
 {% extends "base.html" %}}
 
 {% block title %}
-  <title>{{ dish_type.name }}</title>
+  {{ dish_type.name }}
 {% endblock %}
 
 {% block content %}
-  <h1>{{ dish_type.name }}</h1>
-    <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger link-to-page">
-      Delete
-    </a>
+  <div class="py-2"></div>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <div class="shadow">
+        <div class="py-2">
+          <div class="d-flex justify-content-center">
+            <h1>
+              {{ dish_type.name }}
+              <a href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}" class="btn btn-danger link-to-page">
+                Delete
+              </a>
+              <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-secondary link-to-page">
+                Update
+              </a>
+              <hr>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}" class="btn btn-secondary link-to-page">
-      Update
-    </a>
-  </h1>
   <hr>
-  <h2>Total amount of recipe{{ dish_type.dishes.count|pluralize }}: {{ dish_type.dishes.count }}</h2>
+  <div class="d-flex justify-content-center">
+    <h2>Total amount of recipe{{ dish_type.dishes.count|pluralize }}: {{ dish_type.dishes.count }}</h2>
+  </div>
   <hr>
 
-  {% for dish in dish_type.dishes.all %}
-    <h3><a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a></h3>
-    <ul>
-      <li>{{ dish.cooks.count }} cook{{ dish.cooks.count|pluralize }} can make this recipe.</li>
-      <li>price: {{ dish.price }}</li>
-    </ul>
-    <hr>
-  {% empty %}
-    <p>This dish type is empty.</p>
-  {% endfor %}
+  <div class="shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        {% if dish_type.dishes.count > 0 %}
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <thead class="thead-light">
+          <tr>
+            <th class="border-0 rounded-start">
+              <h5>Name</h5>
+            </th>
+            <th class="border-0">
+              <h5>Responsible Cooks number</h5>
+            </th>
+            <th class="border-0 rounded-end">
+              <h5>Price</h5>
+            </th>
+          </tr>
+          </thead>
+
+          {% for dish in dish_type.dishes.all %}
+          <tbody>
+          <tr>
+            <td class="border-0 fw-bold">
+              <h5>
+                <a href="{% url 'kitchen:dish-detail' pk=dish.pk %}">{{ dish.name }}</a>
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ dish.cooks.count }}
+              </h5>
+            </td>
+            <td class="border-0 fw-bold">
+              <h5>
+                {{ dish.price }}
+              </h5>
+            </td>
+          </tbody>
+          {% endfor %}
+        </table>
+
+        {% else %}
+
+          <hr>
+          <div class="alert alert-secondary" role="alert">
+            <div class="shadow">
+              <div class="py-4">
+                <div class="d-flex justify-content-center">
+                  <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                    <h3>
+                      There are no Dishes in category {{ dish_type.name }}.
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+  <hr>
 
 {% endblock %}
