@@ -3,19 +3,22 @@
 {% block title %}Dishes{% endblock %}
 
 {% block content %}
-  <hr>
-  <div class="card border-0 shadow">
-    <div class="py-4">
-      <div class="d-flex justify-content-center">
-        <div aria-label="breadcrumb" class="d-none d-md-inline-block">
-          <div class="breadcrumb breadcrumb-dark breadcrumb-transparent">
-            <h1>
-              Dishes registered in the system
-              <a
-                  class="btn btn-outline-dark"
-                  href="{% url 'kitchen:dish-create' %}"
-              >Create more</a>
-            </h1>
+
+  <div class="py-2"></div>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <div class="shadow">
+        <div class="py-4">
+          <div class="d-flex justify-content-center">
+            <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+              <h1>
+                Dishes registered in the system
+                <a
+                    class="btn btn-outline-dark"
+                    href="{% url 'kitchen:dish-create' %}"
+                >Create more</a>
+              </h1>
+            </div>
           </div>
         </div>
       </div>
