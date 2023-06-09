@@ -24,84 +24,86 @@
 
   {% include "includes/search_field.html" %}
 
-  <div class="card border-0 shadow">
-    <div class="card-body">
-      <div class="table-responsive">
-        {% if cook_list %}
-        <table class="table table-centered table-nowrap mb-0 rounded">
-          <thead class="thead-light">
-          <tr>
-            <th class="border-0 rounded-start">
-              <h5>ID</h5>
-            </th>
-            <th class="border-0">
-              <h5>Username</h5>
-            </th>
-            <th class="border-0">
-              <h5>First name</h5>
-            </th>
-            <th class="border-0">
-              <h5>Last name</h5>
-            </th>
-            <th class="border-0">
-              <h5>Years of experience</h5>
-            </th>
-            <th class="border-0 rounded-end">
-              <h5>Email</h5>
-            </th>
-          </tr>
-          </thead>
+  <div class="shadow">
+    <div class="shadow">
+      <div class="card-body">
+        <div class="table-responsive">
+          {% if cook_list %}
+          <table class="table table-centered table-nowrap mb-0 rounded">
+            <thead class="thead-light">
+            <tr>
+              <th class="border-0 rounded-start">
+                <h5>ID</h5>
+              </th>
+              <th class="border-0">
+                <h5>Username</h5>
+              </th>
+              <th class="border-0">
+                <h5>First name</h5>
+              </th>
+              <th class="border-0">
+                <h5>Last name</h5>
+              </th>
+              <th class="border-0">
+                <h5>Years of experience</h5>
+              </th>
+              <th class="border-0 rounded-end">
+                <h5>Email</h5>
+              </th>
+            </tr>
+            </thead>
 
-          {% for cook in cook_list %}
-          <tbody>
-          <tr>
-            <td class="border-0 fw-bold">
-              <h5>{{ cook.id }}</h5>
-            </td>
-            <td class="border-0 fw-bold">
-              <h5>
-                <a href="{{ cook.get_absolute_url }}">
-                  {{ cook.username }} {% if user == cook %} (Me){% endif %}
-                </a>
-              </h5>
-            </td>
-            <td class="border-0 fw-bold">
-              <h5>
-                {{ cook.first_name }}
-              </h5>
-            </td>
-            <td class="border-0 fw-bold">
-              <h5>
-                {{ cook.last_name }}
-              </h5>
-            </td>
-            <td class="border-0 fw-bold">
-              <h5>
-                {{ cook.years_of_experience|default_if_none:"-" }}
-              </h5>
-            </td>
-            <td class="border-0 fw-bold">
-              <h5>
-                {{ cook.email }}
-              </h5>
-            </td>
-          </tbody>
-          {% endfor %}
-        </table>
-        {% else %}
-          <hr>
-          <div class="card border-0 shadow">
-            <div class="py-4">
-              <div class="d-flex justify-content-center">
-                <div aria-label="breadcrumb" class="d-none d-md-inline-block">
-                  <h3>
-                    There are no Cooks in the system.
-                  </h3>
+            {% for cook in cook_list %}
+            <tbody>
+            <tr>
+              <td class="border-0 fw-bold">
+                <h5>{{ cook.id }}</h5>
+              </td>
+              <td class="border-0 fw-bold">
+                <h5>
+                  <a href="{{ cook.get_absolute_url }}">
+                    {{ cook.username }} {% if user == cook %} (Me){% endif %}
+                  </a>
+                </h5>
+              </td>
+              <td class="border-0 fw-bold">
+                <h5>
+                  {{ cook.first_name }}
+                </h5>
+              </td>
+              <td class="border-0 fw-bold">
+                <h5>
+                  {{ cook.last_name }}
+                </h5>
+              </td>
+              <td class="border-0 fw-bold">
+                <h5>
+                  {{ cook.years_of_experience|default_if_none:"-" }}
+                </h5>
+              </td>
+              <td class="border-0 fw-bold">
+                <h5>
+                  {{ cook.email }}
+                </h5>
+              </td>
+            </tbody>
+            {% endfor %}
+          </table>
+          {% else %}
+            <hr>
+            <div class="card border-0 shadow">
+              <div class="py-4">
+                <div class="d-flex justify-content-center">
+                  <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                    <h3>
+                      There are no Cooks in the system.
+                    </h3>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>

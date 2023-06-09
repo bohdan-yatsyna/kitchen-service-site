@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_filters %}
 
-{% block title %}<title>Cook {{ object|yesno:"Update,Create" }} page</title>{% endblock %}
+{% block title %}
+  Cook {{ object|yesno:"Update,Create" }} page
+{% endblock %}
 
 {% block content %}
   <h1>{{ object|yesno:"Update,Create" }} the next Cook</h1>
