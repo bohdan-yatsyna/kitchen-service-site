@@ -36,9 +36,11 @@
   <hr>
   <div class="shadow">
     <div class="alert alert-secondary" role="alert">
-      <h2>
-        Recipe and description:
-      </h2>
+      <h3>
+        <strong>
+          Recipe and description:
+        </strong>
+      </h3>
       <hr>
       <p class="mb-0">{{ dish.description }}</p>
     </div>
@@ -46,8 +48,10 @@
 
   <div class="shadow">
     <div class="alert alert-secondary" role="alert">
-      <h2>
-        Responsible Cooks:
+      <h3>
+        <strong>
+          Responsible Cooks:
+        </strong>
 
         {% if dish in user.dishes.all %}
           <a href="{% url 'kitchen:toggle-cook-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
@@ -58,7 +62,7 @@
             Assign me to this dish
           </a>
         {% endif %}
-      </h2>
+      </h3>
       <hr>
 
       {% for cook in dish.cooks.all %}

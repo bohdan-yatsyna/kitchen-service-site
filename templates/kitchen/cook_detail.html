@@ -39,55 +39,54 @@
         <table class="table table-centered table-nowrap mb-0 rounded">
           <div class="d-flex justify-content-center">
             <div class="alert alert-secondary" role="alert">
-              <h3>User details</h3>
+              <h4>User details</h4>
             </div>
           </div>
           <thead class="thead-light">
           <tr>
             <th class="border-0 rounded-start">
-              <h5>First name</h5>
+              <h6><strong>First name</strong></h6>
             </th>
             <th class="border-0">
-              <h5>Last name</h5>
+              <h6><strong>Last name</strong></h6>
             </th>
             <th class="border-0">
-              <h5>Years of experience</h5>
+              <h6><strong>Years of experience</strong></h6>
             </th>
             <th class="border-0">
-              <h5>Count of recipes</h5>
+              <h6><strong>Count of recipes</strong></h6>
             </th>
             <th class="border-0 rounded-end">
-              <h5>Email</h5>
-            </th>
+              <h6><strong>Email</strong>         </th>
           </tr>
           </thead>
 
           <tbody>
           <tr>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 {{ cook.first_name }}
-              </h5>
+              </h6>
             </td>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 {{ cook.last_name }}
-              </h5>
+              </h6>
             </td>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 {{ cook.years_of_experience }}
-              </h5>
+              </h6>
             </td>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 {{ cook.dishes.count }}
-              </h5>
+              </h6>
             </td>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 {{ cook.email }}
-              </h5>
+              </h6>
             </td>
           </tbody>
         </table>
@@ -103,19 +102,19 @@
         <table class="table table-centered table-nowrap mb-0 rounded">
           <div class="d-flex justify-content-center">
             <div class="alert alert-secondary" role="alert">
-              <h3>Dishes assigned</h3>
+              <h4>Dishes assigned</h4>
             </div>
           </div>
           <thead class="thead-light">
           <tr>
             <th class="border-0 rounded-start">
-              <h5>Name</h5>
+              <h6><strong>Name</strong></h6>
             </th>
             <th class="border-0">
-              <h5>Price</h5>
+              <h6><strong>Price</strong></h6>
             </th>
             <th class="border-0 rounded-end">
-              <h5>Type</h5>
+              <h6><strong>Type</strong></h6>
             </th>
           </tr>
           </thead>
@@ -124,19 +123,19 @@
           <tbody>
           <tr>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
-              </h5>
+              </h6>
             </td>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 {{ dish.price }}
-              </h5>
+              </h6>
             </td>
             <td class="border-0 fw-bold">
-              <h5>
+              <h6>
                 <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.id %}">{{ dish.dish_type.name }}</a>
-              </h5>
+              </h6>
             </td>
           </tbody>
           {% endfor %}
