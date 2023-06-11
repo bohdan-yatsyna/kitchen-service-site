@@ -36,152 +36,153 @@ _____ is used in this project _____
 </head>
 
 <body>
-  <header class="header-global">
-    <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
-      <div class="container position-relative">
-        <div class="navbar-collapse collapse me-auto" id="navbar_global">
-          <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-            <li class="nav-item me-2">
-              <a
-                  href="{% url 'kitchen:cook-list' %}"
-                  class="btn btn-outline-white d-inline-flex align-items-center me-md-3"
-              >Cooks</a>
-            </li>
-            <li class="nav-item me-2">
-              <a
-                  href="{% url 'kitchen:dish-type-list' %}"
-                  class="btn btn-outline-white d-inline-flex align-items-center me-md-3"
-              >Dish Types</a>
-            </li>
-            <li class="nav-item me-2">
-              <a
-                  href="{% url 'kitchen:dish-list' %}"
-                  class="btn btn-outline-white d-inline-flex align-items-center me-md-3"
-              >Dishes</a>
-            </li>
-
-            {% if user.is_authenticated %}
+  <div class="sticky-top">
+    <header class="header-global">
+      <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
+        <div class="container position-relative">
+          <div class="navbar-collapse collapse me-auto" id="navbar_global">
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
               <li class="nav-item me-2">
                 <a
-                    href="{% url 'kitchen:cook-detail' pk=user.id %}"
-                    class="nav-link"
-                >User: {{ user.username }}</a>
+                    href="{% url 'kitchen:cook-list' %}"
+                    class="btn btn-outline-white d-inline-flex align-items-center me-md-3"
+                >Cooks</a>
               </li>
               <li class="nav-item me-2">
                 <a
-                    href="{% url 'logout' %}"
-                    class="nav-link"
-                >Logout</a>
+                    href="{% url 'kitchen:dish-type-list' %}"
+                    class="btn btn-outline-white d-inline-flex align-items-center me-md-3"
+                >Dish Types</a>
               </li>
-            {% else %}
               <li class="nav-item me-2">
                 <a
-                    href="{% url 'login' %}"
-                    class="nav-link"
-                >Login</a>
+                    href="{% url 'kitchen:dish-list' %}"
+                    class="btn btn-outline-white d-inline-flex align-items-center me-md-3"
+                >Dishes</a>
               </li>
-            {% endif %}
-          </ul>
 
-          </div>
-            <div class="d-flex align-items-center ms-auto">
-              <a
-                  href="https://github.com/bohdan-yatsyna/kitchen-service-site"
-                  target="_blank"
-                  class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
-                  <svg
-                      class="icon icon-xxs me-2" fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                  ><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd"></path></svg>
-                View this project on GitHub
-              </a>
-            </div>
-        </div>
-    </nav>
-  </header>
+              {% if user.is_authenticated %}
+                <li class="nav-item me-2">
+                  <a
+                      href="{% url 'kitchen:cook-detail' pk=user.id %}"
+                      class="nav-link"
+                  >User: {{ user.username }}</a>
+                </li>
+                <li class="nav-item me-2">
+                  <a
+                      href="{% url 'logout' %}"
+                      class="nav-link"
+                  >Logout</a>
+                </li>
+              {% else %}
+                <li class="nav-item me-2">
+                  <a
+                      href="{% url 'login' %}"
+                      class="nav-link"
+                  >Login</a>
+                </li>
+              {% endif %}
+            </ul>
 
-    <main>
-      <section class="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 text-center">
-              <h1 class="fw-bolder">Welcome to Restaurant Kitchen Service Site</h1>
-              <h2 class="lead fw-normal text-muted mb-5">
-                <br>
-                Inner service system purposed to make your kitchen management easier.
-              </h2>
             </div>
-          </div>
-        </div>
-        <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2"><svg class="home-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4"><path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path></svg></figure>
-        </section>
-        <div class="section pt-0">
-          <div class="container mt-n10 mt-lg-n12 z-2">
-            <div class="row justify-content-center">
-              <div class="col-12">
-                <img src="static/assets/img/main-page-img.jpg" alt="Restaurant img.">
+              <div class="d-flex align-items-center ms-auto">
+                <a
+                    href="https://github.com/bohdan-yatsyna/kitchen-service-site"
+                    target="_blank"
+                    class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
+                    <svg
+                        class="icon icon-xxs me-2" fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                    ><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd"></path></svg>
+                  View this project on GitHub
+                </a>
               </div>
-            </div>
-            <hr>
           </div>
-        </div>
+      </nav>
+    </header>
+  </div>
 
-        <section class="section section-lg bg-soft pt-0">
-          <div class="container">
-            <div class="row justify-content-center mb-5 mb-lg-6">
-              <div class="col-6 col-md-3 text-center mb-4">
-                <div class="icon icon-shape bg-white shadow-lg rounded mb-4">
-                  <h2 class="fw-bolder">-{{ num_dishes }}-</h2>
-                </div>
-                <h2 class="text-gray">Different Dish recipes are available </h2>
-              </div>
-              <div class="col-6 col-md-3 text-center mb-4">
-                <div class="icon icon-shape bg-white shadow-lg rounded mb-4">
-                  <h2 class="fw-bolder">-{{ num_dish_types }}-</h2>
-                </div>
-                <h2 class="text-gray">Dish Types provided</h2>
-              </div>
-              <div class="col-6 col-md-3 text-center mb-4">
-                <div class="icon icon-shape bg-white shadow-lg rounded mb-4">
-                  <h2 class="fw-bolder">-{{ num_cooks }}-</h2>
-                </div>
-                <h2 class="text-gray">Professional Cooks are registered in the portal</h2>
-              </div>
-              <hr>
-            </div>
-          </div>
-
-          {% if user.is_authenticated %}
-          <div class="d-flex align-items-center justify-content-center">
-            <h4>You visited this page {{ num_visits }} time{{ num_visits|pluralize }}</h4>
-          </div>
-
-          {% else %}
-          <div class="d-flex align-items-center justify-content-center">
-            <div class="col-6 col-md-3 text-center mb-4">
-              <a href="{% url 'login' %}" class="btn btn-outline-success">
-                <h2>Log in to start</h2>
-              </a>
-            </div>
-          </div>
-          {% endif %}
-
-        </section>
-    </main>
-
-    <footer class="footer py-4 bg-gray-800 text-white">
+  <main>
+    <section class="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
       <div class="container">
         <div class="row">
-          <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-            <p class="fw-normal font-small mb-0">
-              &copy; Created in 2023<a target="_blank" href="https://github.com/bohdan-yatsyna"> with coding practice purposes as a pet-project</a>.</p>
+          <div class="col-12 text-center">
+            <h1 class="fw-bolder">Welcome to Restaurant Kitchen Service Site</h1>
+            <h2 class="lead fw-normal text-muted mb-5">
+              Inner service system purposed to make your kitchen management easier.
+            </h2>
           </div>
         </div>
       </div>
-    </footer>
+      <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2"><svg class="home-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4"><path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path></svg></figure>
+    </section>
 
-    {% include 'includes/scripts.html' %}
+    <div class="section pt-0">
+      <div class="container mt-n10 mt-lg-n12 z-2">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <img src="static/assets/img/main-page-img.jpg" alt="Restaurant immage">
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+    <section class="section section-lg bg-soft pt-0">
+      <div class="container">
+        <div class="row justify-content-center mb-5 mb-lg-6">
+          <div class="col-6 col-md-3 text-center mb-4">
+            <div class="icon icon-shape bg-white shadow-lg rounded mb-4">
+              <h2 class="fw-bolder">-{{ num_dishes }}-</h2>
+            </div>
+            <h2 class="text-gray">Different Dish recipes are available </h2>
+          </div>
+          <div class="col-6 col-md-3 text-center mb-4">
+            <div class="icon icon-shape bg-white shadow-lg rounded mb-4">
+              <h2 class="fw-bolder">-{{ num_dish_types }}-</h2>
+            </div>
+            <h2 class="text-gray">Dish Types provided</h2>
+          </div>
+          <div class="col-6 col-md-3 text-center mb-4">
+            <div class="icon icon-shape bg-white shadow-lg rounded mb-4">
+              <h2 class="fw-bolder">-{{ num_cooks }}-</h2>
+            </div>
+            <h2 class="text-gray">Professional Cooks are registered in the portal</h2>
+          </div>
+          <hr>
+        </div>
+      </div>
+
+      {% if user.is_authenticated %}
+      <div class="d-flex align-items-center justify-content-center">
+        <h4>You visited this page {{ num_visits }} time{{ num_visits|pluralize }}</h4>
+      </div>
+
+      {% else %}
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="col-6 col-md-3 text-center mb-4">
+          <a href="{% url 'login' %}" class="btn btn-outline-success">
+            <h2>Log in to start</h2>
+          </a>
+        </div>
+      </div>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="footer py-4 bg-gray-800 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+          <p class="fw-normal font-small mb-0">
+            &copy; Created in 2023<a target="_blank" href="https://github.com/bohdan-yatsyna"> with coding practice purposes as a pet-project.</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  {% include 'includes/scripts.html' %}
 
 </body>
 
