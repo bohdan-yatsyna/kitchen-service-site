@@ -16,7 +16,7 @@ class DishType(models.Model):
 
 
 class Cook(AbstractUser):
-    years_of_experience = models.PositiveIntegerField(blank=True, null=True)
+    years_of_experience = models.PositiveIntegerField(null=True)
 
     class Meta:
         ordering = ["username"]
