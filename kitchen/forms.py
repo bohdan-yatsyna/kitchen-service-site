@@ -81,7 +81,7 @@ class CookUpdateForm(forms.ModelForm):
 
 
 def validate_years_of_experience(years_of_experience):
-    if years_of_experience not in range(1, 77):
+    if years_of_experience not in range(0, 99):
         raise ValidationError("Please, enter a valid number")
 
     return years_of_experience
