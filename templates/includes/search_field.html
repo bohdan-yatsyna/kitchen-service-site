@@ -1,15 +1,19 @@
 {% load crispy_forms_filters %}
 
 <hr>
-<div class="shadow">
-  <div class="alert alert-secondary" role="alert">
-    <div class="container-sm">
-      <form action="" method="get">
-        {{ search_form|crispy }}
-        <div class="d-flex justify-content-center">
-          <input class="btn btn-outline-dark" type="submit" value="Search 🔎">
+<div class="shadow fmxw-600">
+  <div class="d-flex justify-content-center">
+    <div class="fmxw-400">
+      <div class="alert alert-secondary" role="alert">
+        <div class="container-sm">
+          <form action="" method="get">
+            {{ search_form|crispy }}
+            <div class="d-flex justify-content-center">
+              <input class="btn btn-outline-dark" type="submit" value="Search 🔎">
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
