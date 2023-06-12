@@ -54,11 +54,11 @@
         </strong>
 
         {% if dish in user.dishes.all %}
-          <a href="{% url 'kitchen:toggle-cook-assign' pk=dish.id %}" class="btn btn-danger link-to-page">
+          <a href="{% url 'kitchen:change-cook' pk=dish.id %}" class="btn btn-danger link-to-page">
             Delete me from this dish
           </a>
         {% else %}
-          <a href="{% url 'kitchen:toggle-cook-assign' pk=dish.id %}" class="btn btn-success link-to-page">
+          <a href="{% url 'kitchen:change-cook' pk=dish.id %}" class="btn btn-success link-to-page">
             Assign me to this dish
           </a>
         {% endif %}

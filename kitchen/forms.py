@@ -26,6 +26,17 @@ class DishForm(forms.ModelForm):
         return price
 
 
+class DishCookUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Dish
+        fields = []
+        widgets = {
+            "id": forms.HiddenInput(),
+            "cooks": forms.HiddenInput()
+        }
+
+
 class DishSearchForm(forms.Form):
     name = forms.CharField(
         max_length=255,
