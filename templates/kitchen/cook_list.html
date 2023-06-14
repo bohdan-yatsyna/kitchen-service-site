@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Cooks{% endblock %}
+
+{% block content %}
+
+  <div class="py-2"></div>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <div class="shadow">
+        <div class="py-4">
+          <div class="d-flex justify-content-center">
+            <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+              <h1>
+                Cooks profiles registered in the system
+                <a class="btn btn-outline-dark btn-lg" href="{% url 'kitchen:cook-create' %}">Register more</a>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/search_field.html" %}
+
+  <div class="shadow">
+    <div class="shadow">
+      <div class="card-body">
+        <div class="table-responsive">
+
+          {% if cook_list %}
+          <table class="table table-centered table-nowrap mb-0 rounded">
+            <thead class="thead-light">
+            <tr>
+              <th class="border-0 rounded-start">
+                <h6><strong>ID</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6><strong>Username</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6><strong>First name</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6><strong>Last name</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6><strong>Years of experience</strong></h6>
+              </th>
+              <th class="border-0 rounded-end">
+                <h6><strong>Email</strong></h6>
+              </th>
+            </tr>
+            </thead>
+
+            {% for cook in cook_list %}
+            <tbody>
+            <tr>
+              <td class="border-0 fw-bold">
+                <h6>{{ cook.id }}</h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  <a href="{{ cook.get_absolute_url }}">
+                    {{ cook.username }} {% if user == cook %} (Me){% endif %}
+                  </a>
+                </h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  {{ cook.first_name }}
+                </h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  {{ cook.last_name }}
+                </h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  {{ cook.years_of_experience|default_if_none:"-" }}
+                </h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  {{ cook.email }}
+                </h6>
+              </td>
+            </tbody>
+            {% endfor %}
+          </table>
+
+          {% else %}
+            <hr>
+            <div class="shadow">
+              <div class="py-4">
+                <div class="d-flex justify-content-center">
+                  <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                    <h3>
+                      There are no Cooks in the system.
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}}
+
+{% block title %} {{ dish.name }} --- ID: {{ dish.id }} {% endblock %}
+
+{% block content %}
+
+  <div class="py-2"></div>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <div class="shadow">
+        <div class="d-flex justify-content-center">
+          <h1>
+            {{ dish.name }}
+            <hr>
+          </h1>
+        </div>
+        <div class="d-flex justify-content-center">
+          <h4>
+            | <strong> Type: </strong>
+            <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.id %}">{{ dish.dish_type.name }}</a>
+              |
+            <strong> Price: </strong>
+             {{ dish.price }} |
+            <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger link-to-page">
+              Delete
+            </a> |
+            <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-secondary link-to-page">
+              Update
+            </a> |
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <h3>
+        <strong>
+          Recipe and description:
+        </strong>
+      </h3>
+      <hr>
+      <p class="mb-0">{{ dish.description }}</p>
+    </div>
+  </div>
+
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <h3>
+        <strong>
+          Responsible Cooks:
+        </strong>
+
+        {% if dish in user.dishes.all %}
+          <a href="{% url 'kitchen:change-cook' pk=dish.id %}" class="btn btn-danger link-to-page">
+            Delete me from this dish
+          </a>
+        {% else %}
+          <a href="{% url 'kitchen:change-cook' pk=dish.id %}" class="btn btn-success link-to-page">
+            Assign me to this dish
+          </a>
+        {% endif %}
+      </h3>
+      <hr>
+
+      {% for cook in dish.cooks.all %}
+        <a href="{% url 'kitchen:cook-detail' pk=cook.id %}">
+          <p><strong>{{ cook }}</strong></p>
+        </a>
+
+      {% empty %}
+        <p><strong>This dish has no assigned Cooks.</strong></p>
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% endblock %}

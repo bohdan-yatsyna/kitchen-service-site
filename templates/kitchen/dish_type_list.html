@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Dish Types{% endblock %}
+
+{% block content %}
+<div class="py-2"></div>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <div class="shadow">
+        <div class="py-4">
+          <div class="d-flex justify-content-center">
+            <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+              <h1>
+                Dish Types registered in the system
+                <a class="btn btn-outline-dark btn-lg" href="{% url 'kitchen:dish-type-create' %}">Create more</a>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/search_field.html" %}
+
+  <div class="shadow">
+    <div class="shadow">
+      <div class="card-body">
+        <div class="table-responsive">
+          {% if dish_type_list %}
+          <table class="table table-centered table-nowrap mb-0 rounded">
+            <thead class="thead-light">
+            <tr>
+              <th class="border-0 rounded-start">
+                <h6><strong>ID</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6><strong>Name</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6><strong>Recipes number</strong></h6>
+              </th>
+              <th class="border-0">
+                <h6></h6>
+              </th>
+              <th class="border-0 rounded-end">
+                <h6></h6>
+              </th>
+            </tr>
+            </thead>
+
+            {% for dish_type in dish_type_list %}
+            <tbody>
+            <tr>
+              <td class="border-0 fw-bold">
+                <h6>{{ dish_type.id }}</h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  <a href="{% url 'kitchen:dish-type-detail' pk=dish_type.id %}">{{ dish_type.name }}</a>
+                </h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <h6>
+                  {{ dish_type.dishes.count }}
+                </h6>
+              </td>
+              <td class="border-0 fw-bold">
+                <a
+                    href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}"
+                    class="btn btn-outline-danger link-to-page"
+                >Delete</a>
+              </td>
+              <td class="border-0 fw-bold">
+                <a
+                    href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}"
+                    class="btn btn-outline-dark link-to-page"
+                >Update</a>
+              </td>
+            </tbody>
+            {% endfor %}
+
+          </table>
+
+          {% else %}
+          <hr>
+            <div class="shadow">
+              <div class="py-4">
+                <div class="d-flex justify-content-center">
+                  <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                    <h3>
+                      There are no Dish Types in the system.
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% endblock %}

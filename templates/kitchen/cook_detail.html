@@ -1,0 +1,166 @@
+{% extends "base.html" %}}
+
+{% block title %}
+  Cook: {{ cook.first_name }}  {{ cook.last_name }}
+{% endblock %}
+
+{% block content %}
+  <div class="py-2"></div>
+  <div class="shadow">
+    <div class="alert alert-secondary" role="alert">
+      <div class="shadow">
+        <div class="py-2">
+          <div class="d-flex justify-content-center">
+            <h1>
+              Cook: {{ cook.first_name }} {{ cook.last_name }} {% if user == cook %} (Me){% endif %}
+              <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">
+                Delete
+              </a>
+              <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
+                Update
+              </a>
+              <hr>
+            </h1>
+          </div>
+          <div class="d-flex justify-content-center">
+            <h4>
+              Username:
+              <strong> {{ cook.username }}</strong>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <div class="d-flex justify-content-center">
+            <div class="alert alert-secondary" role="alert">
+              <h4>User details</h4>
+            </div>
+          </div>
+          <thead class="thead-light">
+          <tr>
+            <th class="border-0 rounded-start">
+              <h6><strong>First name</strong></h6>
+            </th>
+            <th class="border-0">
+              <h6><strong>Last name</strong></h6>
+            </th>
+            <th class="border-0">
+              <h6><strong>Years of experience</strong></h6>
+            </th>
+            <th class="border-0">
+              <h6><strong>Count of recipes</strong></h6>
+            </th>
+            <th class="border-0 rounded-end">
+              <h6><strong>Email</strong>         </th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td class="border-0 fw-bold">
+              <h6>
+                {{ cook.first_name }}
+              </h6>
+            </td>
+            <td class="border-0 fw-bold">
+              <h6>
+                {{ cook.last_name }}
+              </h6>
+            </td>
+            <td class="border-0 fw-bold">
+              <h6>
+                {{ cook.years_of_experience }}
+              </h6>
+            </td>
+            <td class="border-0 fw-bold">
+              <h6>
+                {{ cook.dishes.count }}
+              </h6>
+            </td>
+            <td class="border-0 fw-bold">
+              <h6>
+                {{ cook.email }}
+              </h6>
+            </td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        {% if cook.dishes.count > 0 %}
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <div class="d-flex justify-content-center">
+            <div class="alert alert-secondary" role="alert">
+              <h4>Dishes assigned</h4>
+            </div>
+          </div>
+          <thead class="thead-light">
+          <tr>
+            <th class="border-0 rounded-start">
+              <h6><strong>Name</strong></h6>
+            </th>
+            <th class="border-0">
+              <h6><strong>Price</strong></h6>
+            </th>
+            <th class="border-0 rounded-end">
+              <h6><strong>Type</strong></h6>
+            </th>
+          </tr>
+          </thead>
+
+          {% for dish in cook.dishes.all %}
+          <tbody>
+          <tr>
+            <td class="border-0 fw-bold">
+              <h6>
+                <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+              </h6>
+            </td>
+            <td class="border-0 fw-bold">
+              <h6>
+                {{ dish.price }}
+              </h6>
+            </td>
+            <td class="border-0 fw-bold">
+              <h6>
+                <a href="{% url 'kitchen:dish-type-detail' pk=dish.dish_type.id %}">{{ dish.dish_type.name }}</a>
+              </h6>
+            </td>
+          </tbody>
+          {% endfor %}
+        </table>
+
+        {% else %}
+
+          <hr>
+          <div class="alert alert-secondary" role="alert">
+            <div class="shadow">
+              <div class="py-4">
+                <div class="d-flex justify-content-center">
+                  <div aria-label="breadcrumb" class="d-none d-md-inline-block">
+                    <h3>
+                      There are no Dishes assigned to this user.
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+  <hr>
+{% endblock %}

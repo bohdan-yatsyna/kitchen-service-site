@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Dish delete page
+{% endblock %}
+
+{% block content %}
+  <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
+    <div class="container">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="alert alert-danger shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-600">
+          <br>
+          <div class="text-center text-md-center mb-4 mt-md-0">
+            <div class="shadow">
+              <div class="alert alert-dark" role="alert">
+                <h1 class="mb-0 h3">
+                  <strong>
+                    Are you sure you want to delete the next Dish profile?
+                    <br>
+                    <hr>
+                  </strong>
+                  {{ dish.name }}
+                </h1>
+              </div>
+            </div>
+          </div>
+          <br><br><br>
+          <div class="d-flex justify-content-center">
+            <form action="" method="post">
+              {% csrf_token %}
+              <input type="submit" value="Delete" class="btn btn-outline-danger btn-lg">
+              <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="btn btn-outline-dark btn-lg">Cancel</a>
+            </form>
+          </div>
+          <br>
+        </div>
+       </div>
+     </div>
+  </section>
+{% endblock %}
