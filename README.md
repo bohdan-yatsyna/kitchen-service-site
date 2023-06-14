@@ -56,7 +56,7 @@ Open preferable web-browser and enter the next link "http://127.0.0.1:8000/"
 ## ✨ PREVIEWS OF WEBPAGES ARE BELOW: ✨
 
 ### Home page:
-![HOME PAGE.png](static/assets/img/samples_for_readme/HOME PAGE.png)
+![HOME PAGE.png](static/assets/img/samples_for_readme/HOME_PAGE.png)
 
 ### Login page:
 ![LOGIN_PAGE](static/assets/img/samples_for_readme/LOGIN_PAGE.PNG)
