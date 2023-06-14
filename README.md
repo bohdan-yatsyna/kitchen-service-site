@@ -5,7 +5,7 @@ This Django project is designed to facilitate internal managing processes and pr
 Each Cook of your restaurant has own profile with corresponding information and Dishes he/she is assigned to prepare. 
 ---
 
-## 🌐 Visit my project deployed to Render: 🌐 
+## 🌐 Visit my project deployed to Render: 
 ### [Restaurant Kitchen Service site](https://restaurant-kitchen-site.onrender.com)
 
 Be aware that website is working very slowly only due to free server usage in deployment👆. (Page can load 10 seconds)
@@ -20,7 +20,7 @@ password: Welcome-There_1
 ```
 ---
 
-## 💾 Installation using GIT: 💾 
+## 💾 Installation using GIT:
 
 NOTE PLEASE: Python3 must be already installed. 
 
@@ -40,7 +40,7 @@ python manage.py runserver
 Open preferable web-browser and enter the next link "http://127.0.0.1:8000/"
 ---
 
-## 🚀  Features 🚀 
+## 🚀 Features
 - Customizable Django admin pannel (for superusers)
 - Reliable Django Authentication functions and Validations
 - Intuitive managing system for Restaurant Kitchen with website interface
@@ -49,11 +49,11 @@ Open preferable web-browser and enter the next link "http://127.0.0.1:8000/"
 - Made with love ;-)
 ---
 
-## 💾 DB Structure: 💾 
+## 💾 DB Structure:
 ![DB_STRUCTURE.png](static/assets/img/samples_for_readme/DB_STRUCTURE.png)
 ---
 
-## ✨ PREVIEWS OF WEBPAGES ARE BELOW: ✨
+## ✨ PREVIEWS OF WEBPAGES ARE BELOW:
 
 ### Home page:
 ![HOME PAGE.png](static/assets/img/samples_for_readme/HOME_PAGE.png)
