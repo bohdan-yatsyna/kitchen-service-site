@@ -24,20 +24,35 @@ password: Welcome-There_1
 
 NOTE PLEASE: Python3 must be already installed. 
 
-```python
+```shell
 git clone https://github.com/bohdan-yatsyna/kitchen-service-site.git
 cd kitchen-service-site
-python3 -m venv venv
-
-venv\Scripts\activate (on Windows)
-source venv/bin/activate (on macOS)
-
-pip install -r requirement.txt
-python manage.py migrate
-python manage.py runserver
+python -m venv venv
 ```
 
+### 💻 Linux/macOS:
+```shell
+  source venv/bin/activate
+  pip install -r requirements.txt
+  export DJANGO_SECRET_KEY=your_preferable_secret_key
+  export DJANGO_DEBUG=True
+```
+
+### 🖥 Windows:
+```shell
+  venv\Scripts\activate
+  pip install -r requirements.txt
+  set DJANGO_SECRET_KEY=your_preferable_secret_key
+  set DJANGO_DEBUG=True
+```
+
+### Last step to open the project on local server:
+```shell
+  python manage.py migrate
+  python manage.py runserver
+```
 Open preferable web-browser and enter the next link "http://127.0.0.1:8000/"
+
 ---
 
 ## 🚀 Features
