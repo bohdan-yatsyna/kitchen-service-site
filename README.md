@@ -1,5 +1,7 @@
 # ✨ Restaurant Kitchen Service site ✨
 
+OUTDATED!!!
+
 The kitchen of every restaurant needs a responsible division of duties and subordination. 
 This Django project is designed to facilitate internal managing processes and provide web interface where you can easily add, change or delete any data.
 Each Cook of your restaurant has own profile with corresponding information and Dishes he/she is assigned to prepare. 
