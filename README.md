@@ -1,6 +1,4 @@
-# ✨ Restaurant Kitchen Service site ✨
-
-OUTDATED!!!
+# !!!OUTDATED!!! Restaurant Kitchen Service site ✨
 
 The kitchen of every restaurant needs a responsible division of duties and subordination. 
 This Django project is designed to facilitate internal managing processes and provide web interface where you can easily add, change or delete any data.
